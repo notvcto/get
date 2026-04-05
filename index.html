@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>get.notvc.to — Linux tooling by notvcto</title>
+  <title>get.notvc.to — Linux tooling by notvc</title>
   <style>
     :root {
       --bg:      #0d1117;
@@ -224,17 +224,17 @@
     <h2>Installation</h2>
 
     <div class="install-block">
-      <p>Download a script and place it on your PATH in one command:</p>
+      <p>Run the installer — it will walk you through each step and ask before using sudo:</p>
 
       <div class="cmd">
         <span class="prompt">$</span>
-        <code id="cmd-compress">curl -fsSL get.notvc.to/compress-video | sudo tee /usr/local/bin/compress-video &gt;/dev/null &amp;&amp; sudo chmod +x /usr/local/bin/compress-video</code>
+        <code id="cmd-compress">curl -fsSL get.notvc.to/install/compress-video | bash</code>
         <button class="copy-btn" onclick="copy('cmd-compress', this)">copy</button>
       </div>
 
       <p class="note">
         Prefer to inspect before running?
-        <a href="/compress-video">View the raw script</a> first, then paste the command above.
+        <a href="/install/compress-video">View the install script</a> or <a href="/compress-video">the raw tool</a> first.
       </p>
     </div>
 
