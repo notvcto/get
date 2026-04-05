@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>get.notvc.to — Linux tooling by notvcto</title>
+  <style>
+    :root {
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --border:  #30363d;
+      --cyan:    #39d0d8;
+      --green:   #3fb950;
+      --yellow:  #d29922;
+      --muted:   #8b949e;
+      --text:    #e6edf3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 720px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .domain {
+      font-size: 1.05rem;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .tool {
+      background: var(--surface);
+      padding: 1.2rem 1.4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 2rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tool:last-child { border-bottom: none; }
+
+    .tool-name {
+      color: var(--cyan);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-name a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .tool-name a:hover { text-decoration: underline; }
+
+    .tool-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      border: 1px solid;
+      white-space: nowrap;
+      align-self: start;
+      margin-top: 0.15rem;
+    }
+
+    .badge-shell  { color: var(--green);  border-color: var(--green);  }
+    .badge-stable { color: var(--yellow); border-color: var(--yellow); }
+
+    .install-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .install-block p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cmd {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt { color: var(--green); user-select: none; }
+
+    .cmd code {
+      flex: 1;
+      color: var(--text);
+      font-size: 0.82rem;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .copy-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 0.75rem;
+    }
+
+    .note a { color: var(--cyan); }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+      margin-top: auto;
+      padding-top: 2rem;
+    }
+
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="domain">get.notvc.to</p>
+    <h1>Linux tooling</h1>
+    <p class="tagline">Bash scripts for humans. No dependencies, no nonsense.</p>
+  </header>
+
+  <main>
+
+    <h2>Available tools</h2>
+
+    <div class="tool-list">
+      <div class="tool">
+        <div>
+          <div class="tool-name">
+            <a href="/compress-video">compress-video</a>
+          </div>
+          <div class="tool-desc">
+            Interactive FFmpeg wrapper for video compression. Supports H.265, AV1,
+            and NVIDIA NVENC — with quality presets, trimming, and a before/after
+            size report. No GUI required.
+          </div>
+        </div>
+        <span class="badge badge-shell">bash</span>
+      </div>
+    </div>
+
+    <h2>Installation</h2>
+
+    <div class="install-block">
+      <p>Download a script and place it on your PATH in one command:</p>
+
+      <div class="cmd">
+        <span class="prompt">$</span>
+        <code id="cmd-compress">curl -fsSL get.notvc.to/compress-video | sudo tee /usr/local/bin/compress-video &gt;/dev/null &amp;&amp; sudo chmod +x /usr/local/bin/compress-video</code>
+        <button class="copy-btn" onclick="copy('cmd-compress', this)">copy</button>
+      </div>
+
+      <p class="note">
+        Prefer to inspect before running?
+        <a href="/compress-video">View the raw script</a> first, then paste the command above.
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Scripts hosted on <a href="https://github.com/notvcto" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://notvc.to" target="_blank">notvc.to</a>
+    </p>
+  </footer>
+
+  <script>
+    function copy(id, btn) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'copied!';
+        btn.style.color = 'var(--green)';
+        btn.style.borderColor = 'var(--green)';
+        setTimeout(() => {
+          btn.textContent = 'copy';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 1800);
+      });
+    }
+  </script>
+
+</body>
+</html>
