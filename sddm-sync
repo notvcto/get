@@ -1,0 +1,12 @@
+#!/bin/bash
+# Accept the path from Matugen
+WALL="$1"
+SDDM_WALL="/usr/share/sddm/themes/dusky/backgrounds/default.jpg"
+
+if [ -f "$WALL" ]; then
+    cp "$WALL" "$SDDM_WALL"
+    chmod 644 "$SDDM_WALL"
+    echo "SDDM Sync Success: $WALL"
+else
+    echo "Error: Image path '$WALL' is invalid."
+fi
