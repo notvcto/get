@@ -2,6 +2,10 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+echo "[*] Cleaning up previous mounts..."
+umount -R /mnt 2>/dev/null || true
+swapoff -a 2>/dev/null || true
+
 echo "[*] Wiping /dev/nvme0n1..."
 sgdisk --zap-all /dev/nvme0n1
 
@@ -68,5 +72,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 EOF
 
-echo "[+] Installation V3 complete! GRUB is staged."
+echo "[+] Installation V4 complete! GRUB is staged."
 echo "[+] Type 'umount -R /mnt', and 'reboot'."
