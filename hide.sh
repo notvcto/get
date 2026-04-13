@@ -11,7 +11,7 @@ sgdisk -n 2:0:0 -t 2:8300 /dev/nvme0n1
 partprobe /dev/nvme0n1
 
 echo "[*] Formatting partitions..."
-mkfs.fat -F3 /dev/nvme0n1p1
+mkfs.fat -F32 /dev/nvme0n1p1
 mkfs.btrfs -f /dev/nvme0n1p2
 
 echo "[*] Creating BTRFS subvolumes..."
